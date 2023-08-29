@@ -15,7 +15,8 @@ IHostBuilder builder = new HostBuilder()
                 .AddApplicationPart(typeof(WorkerGrain).Assembly)
                 .WithReferences())
             .ConfigureLogging(logging => logging.AddConsole())
-            .AddStartupTask<StartupService>();
+            .AddStartupTask<StartupService>()
+            .UseDashboard(options => { options.Port = 8888; });
     });
 
 using IHost host = builder.Build();

@@ -10,6 +10,7 @@
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
       <PackageReference Include="Microsoft.Orleans.Server" Version="3.6.5" />
+      <PackageReference Include="OrleansDashboard" Version="3.6.2" />
     </ItemGroup>
 
     <ItemGroup>
