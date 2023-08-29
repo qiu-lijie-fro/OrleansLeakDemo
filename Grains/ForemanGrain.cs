@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Grains.Interfaces;
 using Microsoft.Extensions.Logging;
 using Orleans;
@@ -27,8 +28,11 @@ public class ForemanGrain : Grain, IForeman
     {
         while (true)
         {
+            var tasks = new List<Task>();
             for (var i = 0; i < 500; i++)
-                await _grainFactory.GetGrain<IWorker>($"WorkerGrain_{i}").Work();
+                tasks.Add(_grainFactory.GetGrain<IWorker>($"WorkerGrain_{i}").Work());
+
+            await Task.WhenAll(tasks.ToArray());
         }
     }
 }
